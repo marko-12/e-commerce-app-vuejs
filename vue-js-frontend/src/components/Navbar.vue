@@ -5,7 +5,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 </script>
 
 <template>
-  <nav class="bg-white shadow">
+  <nav class="bg-white shadow nav-class">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex-shrink-0">
@@ -136,4 +136,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
 <style scoped>
 /* Additional styles, if needed */
+.nav-class {
+  background-color: lightblue;
+}
 </style>
