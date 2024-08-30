@@ -2,10 +2,15 @@
 import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 
-defineProps({
-  setPopUp: {
+const props = defineProps({
+  popUpVisible: {
     type: Boolean,
+    required: true,
     default: false
+  },
+  setPopUpVisibility: {
+    type: Function,
+    required: true
   }
 })
 
@@ -17,22 +22,29 @@ const yesButtonHandler = () => {
 </script>
 
 <template>
-  <div className="PopUp">
-    <div className="pu-content-container">
+  <div class="PopUp">
+    <div class="go-to-class">
       <h1>Go to cart?</h1>
     </div>
-    {/* button controls */}
-    <div className="pu-button-container">
-      <button class="btn-class">Yes</button>
-      <button class="btn-class">No, continue shopping</button>
+    <!-- button controls -->
+    <div class="pu-button-container">
+      <button class="btn-class" @click="yesButtonHandler">Yes</button>
+      <button class="btn-class" @click="props.setPopUpVisibility(false)">
+        No, continue shopping
+      </button>
     </div>
   </div>
 </template>
 
 <style scoped>
 .btn-class {
-  margin: '10px';
-  border-radius: '7px';
-  background-color: '#fcc000';
+  margin: 10px;
+  border-radius: 7px;
+  background-color: #fcc000;
+  margin: 2rem;
+}
+.go-to-class {
+  margin-left: 7rem;
+  margin-top: 2rem;
 }
 </style>

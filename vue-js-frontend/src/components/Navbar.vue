@@ -9,7 +9,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex-shrink-0">
-          <router-link class="text-xl font-semibold text-gray-900" to="/"> Brand </router-link>
+          <RouterLink class="text-xl font-semibold text-gray-900" to="/"> Brand </RouterLink>
         </div>
         <div class="flex items-center space-x-4">
           <!-- User Dropdown -->
@@ -30,43 +30,35 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
                 />
               </svg>
             </MenuButton>
-            <Transition
-              enter="transition ease-out duration-100"
-              enter-from="transform opacity-0 scale-95"
-              enter-to="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leave-from="transform opacity-100 scale-100"
-              leave-to="transform opacity-0 scale-95"
+
+            <MenuItems
+              class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20"
             >
-              <MenuItems
-                class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20"
-              >
-                <MenuItem>
-                  <RouterLink
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    to="/profile"
-                  >
-                    User Profile
-                  </RouterLink>
-                </MenuItem>
-                <MenuItem>
-                  <RouterLink
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    to="/reset-password"
-                  >
-                    Reset Password
-                  </RouterLink>
-                </MenuItem>
-                <MenuItem>
-                  <RouterLink
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    to="/signout"
-                  >
-                    Sign Out
-                  </RouterLink>
-                </MenuItem>
-              </MenuItems>
-            </Transition>
+              <MenuItem>
+                <RouterLink
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  to="/profile"
+                >
+                  User Profile
+                </RouterLink>
+              </MenuItem>
+              <MenuItem>
+                <RouterLink
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  to="/reset-password"
+                >
+                  Reset Password
+                </RouterLink>
+              </MenuItem>
+              <MenuItem>
+                <RouterLink
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  to="/signout"
+                >
+                  Sign Out
+                </RouterLink>
+              </MenuItem>
+            </MenuItems>
           </Menu>
 
           <!-- Admin Dropdown -->

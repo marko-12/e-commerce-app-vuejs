@@ -2,11 +2,22 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Product from '@/components/Product.vue'
 import PopUp from '@/components/PopUp.vue'
+import { computed, ref } from 'vue'
+
+const popUpVisible = ref(true)
+const setPopUpVisibility = (value) => {
+  popUpVisible.value = value
+}
 </script>
 
 <template>
   <h1>Home View</h1>
-  <PopUp />
+  <div v-if="popUpVisible" class="flex items-center justify-center h-screen-class">
+    <div class="w-80 h-40 bg-gray-200">
+      <PopUp :popUpVisible="popUpVisible" :setPopUpVisibility="setPopUpVisibility" />
+    </div>
+    <!-- <PopUp class="pop-up-class" /> -->
+  </div>
 </template>
 
 <style scoped></style>
