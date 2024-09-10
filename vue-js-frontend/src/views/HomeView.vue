@@ -2,9 +2,27 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Product from '@/components/Product.vue'
 import PopUp from '@/components/PopUp.vue'
-import { computed, ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
 
-const popUpVisible = ref(true)
+const page = 1
+const req = () => {
+  setTimeout(async () => {
+    const products = await axios.get(`/api/products?page=${page}`)
+    console.log('My products:' + products)
+  }, 3000)
+}
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get(`/api/products?`)
+    console.log('My products:', data)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+const popUpVisible = ref(false)
 const setPopUpVisibility = (value) => {
   popUpVisible.value = value
 }
