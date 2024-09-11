@@ -6,16 +6,10 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 
 const page = 1
-const req = () => {
-  setTimeout(async () => {
-    const products = await axios.get(`/api/products?page=${page}`)
-    console.log('My products:' + products)
-  }, 3000)
-}
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/api/products?`)
+    const { data } = await axios.get(`/api/products?page=${page}`)
     console.log('My products:', data)
   } catch (error) {
     console.log(error)

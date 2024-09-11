@@ -12,6 +12,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
           <RouterLink class="text-xl font-semibold text-gray-900" to="/"> Brand </RouterLink>
         </div>
         <div class="flex items-center space-x-4">
+          <RouterLink class="" to="/signup"> Sign Up </RouterLink>
           <!-- User Dropdown -->
           <Menu as="div" class="relative">
             <MenuButton class="inline-flex items-center text-gray-700 hover:text-gray-900">
@@ -119,7 +120,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
           </Menu>
 
           <!-- Contact Link -->
-          <RouterLink class="text-gray-700 hover:text-gray-900" to="/contact"> Contact </RouterLink>
+          <!-- <RouterLink class="text-gray-700 hover:text-gray-900" to="/contact"> Contact </RouterLink> -->
         </div>
       </div>
     </div>
