@@ -10,7 +10,6 @@ const page = 1
 onMounted(async () => {
   try {
     const { data } = await axios.get(`/api/products?page=${page}`)
-    console.log('My products:', data)
   } catch (error) {
     console.log(error)
   }

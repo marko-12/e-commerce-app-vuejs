@@ -5,14 +5,17 @@ export const useUserInfoStore = defineStore('userInfo', () => {
   const userInfo = ref(null)
   const token = ref(null)
 
-  const signIn = (data) => {
-    userInfo.value = data.userInfo
-    token.value = data.token
+  const setToken = (data) => {
+    token.value = data
+  }
+
+  const setUserInfo = (ui) => {
+    userInfo.value = ui
   }
 
   const signOut = () => {
     userInfo.value = null
     token.value = null
   }
-  return { userInfo, token, signIn, signOut }
+  return { userInfo, token, setToken, setUserInfo, signOut }
 })

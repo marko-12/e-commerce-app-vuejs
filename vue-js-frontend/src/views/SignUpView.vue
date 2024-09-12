@@ -27,9 +27,7 @@ const submitHandler = () => {
 
 <template>
   <div class="small-container">
-    <Helmet>
-      <title>Sign Up</title>
-    </Helmet>
+    <title>Sign Up</title>
     <h1 class="my-3">Sign Up</h1>
     <form @submit.prevent="submitHandler">
       <div class="mb-3">
