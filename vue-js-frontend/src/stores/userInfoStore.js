@@ -1,21 +1,32 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useUserInfoStore = defineStore('userInfo', () => {
-  const userInfo = ref(null)
-  const token = ref(null)
+export const useUserInfoStore = defineStore(
+  'userInfo',
+  () => {
+    const userInfo = ref(null)
+    const token = ref(null)
 
-  const setToken = (data) => {
-    token.value = data
-  }
+    const setToken = (data) => {
+      token.value = data
+    }
 
-  const setUserInfo = (ui) => {
-    userInfo.value = ui
-  }
+    const setUserInfo = (ui) => {
+      userInfo.value = ui
+    }
 
-  const signOut = () => {
-    userInfo.value = null
-    token.value = null
+    const signOut = () => {
+      userInfo.value = null
+      token.value = null
+    }
+    return { userInfo, token, setToken, setUserInfo, signOut }
+  },
+  {
+    persist: {
+      // Storage options
+      key: 'userInfoAndToken',
+      storage: localStorage,
+      paths: ['token', 'userInfo']
+    }
   }
-  return { userInfo, token, setToken, setUserInfo, signOut }
-})
+)

@@ -3,13 +3,11 @@ import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import axios from 'axios'
 import Toast from 'vue-toastification'
-import { useUserInfoStore } from '@/stores/userInfoStore' // Importing your Pinia store
+import { useUserInfoStore } from '@/stores/userInfoStore'
 
-// Define reactive variables for form inputs
 const email = ref('')
 const password = ref('')
 
-// Set up router and route
 const router = useRouter()
 const route = useRoute()
 const redirect = route.query.redirect || '/'
@@ -17,7 +15,6 @@ const redirect = route.query.redirect || '/'
 // Access the Pinia store
 const userInfoStore = useUserInfoStore()
 
-// Submit handler to send API request
 const submitHandler = async () => {
   try {
     const { data } = await axios.post('/api/auth/login', {
@@ -28,14 +25,15 @@ const submitHandler = async () => {
     if (data) {
       // Call the signIn action from the Pinia store
       userInfoStore.setToken(data)
-      localStorage.setItem('token', JSON.stringify(data))
+      //localStorage.setItem('token', JSON.stringify(data))
 
       const userInfo = await axios.get('/api/user-info', {
         headers: { Authorization: `Bearer ${data.access_token}` }
       })
       userInfoStore.setUserInfo(userInfo.data)
-      localStorage.setItem('userInfo', JSON.stringify(userInfo.data))
+      //localStorage.setItem('userInfo', JSON.stringify(userInfo.data))
 
+      console.log(userInfoStore.token)
       router.push(redirect || '/')
     }
   } catch (error) {

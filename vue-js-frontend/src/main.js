@@ -6,6 +6,7 @@ import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 import './index.css'
@@ -17,7 +18,7 @@ const options = {
 }
 app.use(Toast, options)
 app.use(BootstrapVue3)
-app.use(createPinia())
+app.use(createPinia().use(piniaPluginPersistedstate))
 app.use(router)
 
 app.mount('#app')
