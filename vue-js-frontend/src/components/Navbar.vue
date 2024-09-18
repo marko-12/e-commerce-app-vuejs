@@ -1,7 +1,14 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import { useUserInfoStore } from '@/stores/userInfoStore'
 //import { Transition } from '@headlessui/vue'
+
+const signoutHandler = () => {
+  const userStore = useUserInfoStore()
+  userStore.signOut()
+  window.location.href = '/signin'
+}
 </script>
 
 <template>
@@ -54,7 +61,8 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
               <MenuItem>
                 <RouterLink
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  to="/signout"
+                  to="#signout"
+                  @click="signoutHandler"
                 >
                   Sign Out
                 </RouterLink>
