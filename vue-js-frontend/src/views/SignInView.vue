@@ -32,8 +32,6 @@ const submitHandler = async () => {
       })
       userInfoStore.setUserInfo(userInfo.data)
       //localStorage.setItem('userInfo', JSON.stringify(userInfo.data))
-
-      console.log(userInfoStore.token)
       router.push(redirect || '/')
     }
   } catch (error) {

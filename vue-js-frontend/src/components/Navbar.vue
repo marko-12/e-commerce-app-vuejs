@@ -2,7 +2,11 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { useUserInfoStore } from '@/stores/userInfoStore'
+import { onMounted, computed } from 'vue'
 //import { Transition } from '@headlessui/vue'
+
+const userStore = useUserInfoStore()
+const userName = computed(() => userStore.userInfo?.name || 'User')
 
 const signoutHandler = () => {
   const userStore = useUserInfoStore()
@@ -23,7 +27,7 @@ const signoutHandler = () => {
           <!-- User Dropdown -->
           <Menu as="div" class="relative">
             <MenuButton class="inline-flex items-center text-gray-700 hover:text-gray-900">
-              User
+              {{ userName }}
               <svg
                 class="ml-1 h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,13 +63,12 @@ const signoutHandler = () => {
                 </RouterLink>
               </MenuItem>
               <MenuItem>
-                <RouterLink
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  to="#signout"
+                <button
+                  class="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
                   @click="signoutHandler"
                 >
                   Sign Out
-                </RouterLink>
+                </button>
               </MenuItem>
             </MenuItems>
           </Menu>
